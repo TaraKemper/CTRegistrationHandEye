@@ -1,0 +1,18 @@
+- Open a blank 4.11 slicer
+- paste first line from OverlayPointsNotes.txt into command line (may need to change reference path for brain_image_small_2Dreprojection.png in line 13 to match your setup)
+- running that line: exec(open("C:/d/OverlayPoints.py").read()) (as long as path to its location on your computer is correct) will produce a basic visualization with only the 2d and 3d fiducial points overtop the image
+
+
+- open a slicer (4.11)
+- open OverlayPointsNotes.txt
+- run exec(open("C:/d/OverlayPoints.py").read()) in slicer commandline
+- pull whole_brain_label.nii (in reg_data) into slicer
+- copy/paste into commandline: 
+		whole_brain = getNode('whole_brain_label')
+		ext = extrinsic * -1
+		ext_vtk = vtk.vtkMatrix4x4()
+		ext_vtk.DeepCopy((ext[0, 0], ext[0, 1], ext[0, 2], ext[0, 3], ext[1, 0], ext[1, 1], ext[1, 2], ext[1, 3], ext[2, 0], ext[2, 1], ext[2, 2], ext[2, 3], 0, 0, 0, 1))
+		whole_brain.ApplyTransformMatrix(ext_vtk)
+- go to model maker, make the brain surface, the points/fiducials would be in the right place
+- go to Markups, select 3DFiducials in Nodes, click display, change Glyph Size and Text size to small
+- go to Models, click on the eyes to make brain/tumor visible/invisibile, change opacities
