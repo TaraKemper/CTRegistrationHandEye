@@ -23,7 +23,7 @@ f = intrinsic[0, 0]
 h = 1080
 w = 1349
 
-import mathwhere
+import math
 wcx = -2 * (cx - float(w) / 2) / w
 wcy = 2 * (cy - float(h) / 2) / h
 camera.SetWindowCenter(wcx, wcy)
